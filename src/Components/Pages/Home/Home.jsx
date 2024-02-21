@@ -63,7 +63,7 @@ const Home = () => {
 
                             <Link to={`/products/${item.brand_name} `}>
                                 <div className="card card-compact w-full bg-[#F2F2F2] shadow-xl border-2 border-[#F2F2F2]  hover:border-red-400 hover:border-2 hover:shadow-red-300 pt-8 pb-6 ">
-                                    <figure><img className="w-56" src={item.image} alt="Shoes" /></figure>
+                                    <figure><img className="w-56 h-28" src={item.image} alt="Shoes" /></figure>
                                     <div className="card-body">
                                         <h2 className="card-title flex justify-center">{item.brand_name.toUpperCase()}</h2>
                                     </div>

@@ -46,61 +46,65 @@ const MyCart = () => {
     }
 
     return (
-        <div className="px-20 lg:px-56">
+        <div className="px-20 lg:px-56 min-h-screen">
             <div className="container pt-40">
-                <table className="lg:w-full flex flex-row flex-no-wrap sm:bg-white overflow-hidden sm:shadow-lg my-5">
-                    <thead className="text-white ">
-                        <tr className="bg-[#2b1b9a] flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 ">
-                            <th className="p-3 text-left">No</th>
-                            <th className="p-3 text-left">Photo</th>
-                            <th className="p-3 text-left">Product</th>
-                            <th className="p-3 text-left">Type</th>
-                            <th className="p-3 text-left">Rating</th>
-                            <th className="p-3 text-left">Price</th>
-                            <th className="p-3 text-left" width="110px">
-                                Action
-                            </th>
-                        </tr>
+                {
+                    products.length === 0 ? <p>You can not</p>
+                        :
+                        <table className="lg:w-full flex flex-row flex-no-wrap sm:bg-white overflow-hidden sm:shadow-lg my-5">
+                            <thead className="text-white ">
+                                <tr className="bg-[#2b1b9a] flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 ">
+                                    <th className="p-3 text-left">No</th>
+                                    <th className="p-3 text-left">Photo</th>
+                                    <th className="p-3 text-left">Product</th>
+                                    <th className="p-3 text-left">Type</th>
+                                    <th className="p-3 text-left">Rating</th>
+                                    <th className="p-3 text-left">Price</th>
+                                    <th className="p-3 text-left" width="110px">
+                                        Action
+                                    </th>
+                                </tr>
 
 
 
-                    </thead>
-                    <tbody className="flex-1 sm:flex-none">
-                        {/* First Row */}
-                        {
-                            products.map((product, idx) => <tr key={product._id} className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 border-2 lg:border-none border-red-500">
-                                <td className="border-grey-light border hover:bg-gray-100 p-3">
-                                    {idx + 1}
-                                </td>
-                                <td className="border-grey-light border hover:bg-gray-100 p-3">
-                                    <div className="avatar">
-                                        <div className="w-28 h-20">
-                                            <img
-                                                src={product.photo}
-                                                alt=""
-                                            />
-                                        </div>
-                                    </div>
-                                </td>
-                                <td className="border-grey-light border hover:bg-gray-100 p-3 font-sans">
-                                    {product.product_name}
-                                </td>
-                                <td className="border-grey-light border hover:bg-gray-100 p-3">
-                                    {product.type}
-                                </td>
-                                <td className="border-grey-light border hover:bg-gray-100 p-3">
-                                    <Rating rating={product.rating}></Rating>
-                                </td>
-                                <td className="border-grey-light border hover:bg-gray-100 p-3 truncate font-sans">
-                                    {product.price} $
-                                </td>
-                                <td onClick={() => handleDelete(product._id)} className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-semibold cursor-pointer">
-                                    Delete
-                                </td>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
+                            </thead>
+                            <tbody className="flex-1 sm:flex-none">
+                                {/* First Row */}
+                                {
+                                    products.map((product, idx) => <tr key={product._id} className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 border-2 lg:border-none border-red-500">
+                                        <td className="border-grey-light border hover:bg-gray-100 p-3">
+                                            {idx + 1}
+                                        </td>
+                                        <td className="border-grey-light border hover:bg-gray-100 p-3">
+                                            <div className="avatar">
+                                                <div className="w-28 h-20">
+                                                    <img
+                                                        src={product.photo}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className="border-grey-light border hover:bg-gray-100 p-3 font-sans">
+                                            {product.product_name}
+                                        </td>
+                                        <td className="border-grey-light border hover:bg-gray-100 p-3">
+                                            {product.type}
+                                        </td>
+                                        <td className="border-grey-light border hover:bg-gray-100 p-3">
+                                            <Rating rating={product.rating}></Rating>
+                                        </td>
+                                        <td className="border-grey-light border hover:bg-gray-100 p-3 truncate font-sans">
+                                            {product.price} $
+                                        </td>
+                                        <td onClick={() => handleDelete(product._id)} className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-semibold cursor-pointer">
+                                            Delete
+                                        </td>
+                                    </tr>)
+                                }
+                            </tbody>
+                        </table>
+                }
             </div>
         </div>
 
