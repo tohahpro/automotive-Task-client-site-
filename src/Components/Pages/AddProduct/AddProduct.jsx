@@ -8,14 +8,8 @@ import useAxiosPublic from "../../../Hooks/AxiosPublic";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-const AddItems = () => {
-
-
-
+const AddProduct = () => {
     const axiosPublic = useAxiosPublic()
-
-
-
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()
 
@@ -64,7 +58,7 @@ const AddItems = () => {
                 <title>Add Products</title>
 
             </Helmet>
-            <div className="mt-20 p-5 lg:p-20  mx-2 lg:mx-56">
+            <div className="pt-20 p-5 lg:p-20  mx-2 lg:mx-56">
                 <h2 className='text-center pt-8 pb-4 text-5xl font-semibold font-rancho'>Add Product</h2>
                 <p className='max-w-3xl mx-auto text-center text-lg pb-8'>It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -156,4 +150,4 @@ const AddItems = () => {
     );
 };
 
-export default AddItems;
+export default AddProduct;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Rating from "./Rating";
-import Slider from "./Slider";
+
 
 const Products = () => {
 
@@ -25,9 +25,7 @@ const Products = () => {
 
     return (
         <div>
-            <div>
-                <Slider></Slider>
-            </div>
+
             {
                 noDataFound ?
                     <p className="flex items-center justify-center h-[80vh] text-sm  md:text-xl font-bold">{noDataFound}</p>

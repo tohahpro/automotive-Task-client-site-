@@ -101,7 +101,7 @@ const ProductsUpdate = () => {
                             <label>
                                 <input type="number" required name="price"
                                     defaultValue={price}
-                                    placeholder="Enter product price" className="input rounded-sm w-full" />
+                                    placeholder="Enter product price" className="input rounded-sm w-full font-sans" />
                             </label>
                         </div>
                     </div>
@@ -139,7 +139,7 @@ const ProductsUpdate = () => {
                         </div>
                     </div>
 
-                    <input type="submit" value="Add Product" className="btn btn-block bg-black text-white" />
+                    <input type="submit" value="Update Product" className="btn btn-block bg-black text-white" />
 
                 </form>
             </div>

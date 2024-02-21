@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { BiMenu, BiMenuAltRight } from 'react-icons/bi';
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 import Logo from "../../assets/image/logo-icons/logo.png";
 
@@ -110,7 +110,8 @@ const Navbar = () => {
                                         isPending ? "pending" : isActive ? "text-[#67B6F4] underline" : ""
                                     }
                                 >
-                                    My Cart
+                                    <span className="absolute top-8 ml-1 bg-green-400 px-1 text-sm rounded-full text-center font-semibold">10</span>
+                                    <AiOutlineShoppingCart className="text-2xl font-medium flex justify-center items-center"></AiOutlineShoppingCart>
                                 </NavLink>
                             </li>
                         </ul>
