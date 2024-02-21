@@ -41,14 +41,14 @@ const AddProduct = () => {
 
     return (
         <div className="py-36  px-2 md:px-20 lg:px-56">
-            <h2 className='text-center pt-8 pb-4 text-5xl font-semibold font-rancho'>Add Product</h2>
-            <p className='max-w-3xl mx-auto text-center text-lg pb-8'>It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>
+            <h2 className='text-center pt-8 pb-4 text-2xl md:text-5xl font-semibold font-rancho'>Add Product</h2>
+            <p className='max-w-3xl mx-auto text-center text-sm md:text-lg pb-8'>It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>
             <div>
                 <form onSubmit={handleAddProduct} className="space-y-8">
 
                     {/* form row  */}
-                    <div className="md:flex gap-6">
-                        <div className="space-y-4 md:w-1/2">
+                    <div className="md:flex gap-6 ">
+                        <div className="md:w-1/2 pb-3">
                             <label>
                                 <span className=" text-xl font-semibold">Product Name</span>
                             </label>
@@ -59,14 +59,25 @@ const AddProduct = () => {
 
                         {/* Chef*/}
 
+
                         <div className="space-y-4 md:w-1/2">
-                            <label>
+                            <label className="flex justify-start">
                                 <span className="text-xl font-semibold">Brand Name</span>
+
                             </label>
                             <label>
-                                <input type="text" name="brand_name" placeholder="Enter product brand name" className="input rounded-sm w-full" required />
+                                <select className="input rounded-sm w-full" name="brand_name" id="">
+
+                                    <option value="BMW">BMW</option>
+                                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                    <option value="AUDI">AUDI</option>
+                                    <option value="FORD">FORD</option>
+                                    <option value="TESLA">TESLA</option>
+                                    <option value="Toyota">TOYOTA</option>
+                                </select>
                             </label>
                         </div>
+
                     </div>
 
 
@@ -75,7 +86,7 @@ const AddProduct = () => {
                     {/* Supplier */}
 
                     <div className="md:flex gap-6">
-                        <div className="space-y-4 md:w-1/2">
+                        <div className=" pb-3 md:w-1/2">
                             <label>
                                 <span className="text-xl font-semibold">Type</span>
                             </label>
@@ -86,7 +97,7 @@ const AddProduct = () => {
 
                         {/* Taste */}
 
-                        <div className="space-y-4 md:w-1/2">
+                        <div className=" pb-3 md:w-1/2">
                             <label>
                                 <span className="text-xl font-semibold">Price</span>
                             </label>
@@ -104,17 +115,24 @@ const AddProduct = () => {
                         {/* Category */}
 
                         <div className="space-y-4 md:w-1/2">
-                            <label>
+                            <label className="flex justify-start">
                                 <span className="text-xl font-semibold">Rating</span>
+
                             </label>
                             <label>
-                                <input type="number" required name="rating" placeholder=" Enter product rating" className="input rounded-sm w-full" />
+                                <select className="input w-full" name="rating" id="">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
                             </label>
                         </div>
 
                         {/* Details  */}
 
-                        <div className="space-y-4 md:w-1/2">
+                        <div className=" pb-3 md:w-1/2">
                             <label>
                                 <span className="text-xl font-semibold">Description</span>
                             </label>
@@ -126,7 +144,7 @@ const AddProduct = () => {
 
                     {/* form Photo url  */}
 
-                    <div className="space-y-4 md:w-full">
+                    <div className=" pb-3 md:w-full">
                         <label>
                             <span className="text-xl font-semibold">Photo</span>
                         </label>
