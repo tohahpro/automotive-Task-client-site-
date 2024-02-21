@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+
+.header-img {
+    background-image: url('https://i.ibb.co/5BygSP1/Home-page-bottom-image-1.jpg');
+}
+
+.header-img1 {
+    background-image: url('https://i.ibb.co/Wy492bq/slider-image-1.jpg');
+}
+
+/* .bottom-img {
+    background-image: ('https://i.ibb.co/Wy492bq/slider-image-1.jpg');
+} */
+
+.Slider-img-1 {
+    background-image: url('https://i.ibb.co/mBNJFDF/slider-image-2.jpg');
+}
+
+.Slider-img-2 {
+    background-image: url('https://i.ibb.co/VYNd6jb/slider-image-4-1.jpg');
+}
+
+.Slider-img-3 {
+    background-image: url('https://i.ibb.co/GxcTGfb/slider-5.jpg');
+}
+
+
+
+.dark-theme {
+    background-color: rgb(14, 13, 13);
+    color: rgb(163, 169, 173);
+
+}
+
+
+
+
+.light-theme {
+
+    background-color: #eceaea;
+
+
+}
+
+
+
+/* table responsive  */
+
+
+@media (min-width: 640px) {
+    table {
+        display: inline-table !important;
+    }
+
+    thead tr:not(:first-child) {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    thead {
+        display: none;
+    }
+}
+
+td:not(:last-child) {
+    border-bottom: 0;
+}
+
+th:not(:last-child) {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
