@@ -1,165 +1,159 @@
-import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../../../Hooks/AxiosPublic";
 
 
-const AddProduct = () => {
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+const AddItems = () => {
 
-    const handleAddProduct = e => {
-        e.preventDefault()
-        const form = e.target
-        const product_name = form.product_name.value
-        const brand_name = form.brand_name.value.toUpperCase()
-        const type = form.type.value
-        const price = form.price.value
-        const rating = form.rating.value
-        const description = form.description.value
-        const photo = form.photo.value
-        const product = { product_name, brand_name, type, price, rating, description, photo }
 
-        console.log(product);
 
-        fetch('https://automotive-server-site-two.vercel.app/products', {
-            method: 'POST',
+    const axiosPublic = useAxiosPublic()
+
+
+
+    const { register, handleSubmit } = useForm()
+    const navigate = useNavigate()
+
+
+    const onSubmit = async (data) => {
+
+        // image upload to imageBB and then get url 
+        const imageFile = { image: data.image[0] }
+        const res = await axios.post(image_hosting_api, imageFile, {
             headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(product)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Product add Successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    })
-                }
-            })
+                'content-type': 'multipart/form-data'
+            }
+
+        });
+        if (res.data.success) {
+            const productItem = {
+                product_name: data.name,
+                brand_name: data.brand_Name,
+                type: data.type,
+                price: parseFloat(data.price),
+                rating: data.rating,
+                description: data.description,
+                photo: res.data.data.display_url
+            }
+            // console.log(productItem);
+            axiosPublic.post('/products', productItem)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertedId) {
+                        Swal.fire({
+
+                            icon: "success",
+                            title: "Your work has been saved",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/dashboard/my-products')
+                    }
+                })
+        }
+
     }
-
-
     return (
-        <div className="py-36  px-2 md:px-20 lg:px-56">
-            <h2 className='text-center pt-8 pb-4 text-2xl md:text-5xl font-semibold font-rancho'>Add Product</h2>
-            <p className='max-w-3xl mx-auto text-center text-sm md:text-lg pb-8'>It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>
-            <div>
-                <form onSubmit={handleAddProduct} className="space-y-8">
+        <div>
+            <Helmet>
+                <title>Add Products</title>
 
-                    {/* form row  */}
-                    <div className="md:flex gap-6 ">
-                        <div className="md:w-1/2 pb-3">
-                            <label>
-                                <span className=" text-xl font-semibold">Product Name</span>
-                            </label>
-                            <label>
-                                <input type="text" required name="product_name" placeholder="Enter product name" className="input rounded-sm w-full" />
-                            </label>
+            </Helmet>
+            <div className="mt-20 p-5 lg:p-20  mx-2 lg:mx-56">
+                <h2 className='text-center pt-8 pb-4 text-5xl font-semibold font-rancho'>Add Product</h2>
+                <p className='max-w-3xl mx-auto text-center text-lg pb-8'>It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>
+                <form onSubmit={handleSubmit(onSubmit)}>
+
+                    {/* FIRST ROW  */}
+
+                    <div className="md:flex gap-10 mt-5">
+                        <div className="flex-1">
+                            <label className="flex">Product Name</label>
+                            <input {...register("name", { required: true })}
+                                required
+                                type="text" placeholder="Product Name" className="input input-bordered input-info w-full " />
                         </div>
+                        <div className="flex-1">
+                            <label className="flex">Brand_Name</label>
 
-                        {/* Chef*/}
-
-
-                        <div className="space-y-4 md:w-1/2">
-                            <label className="flex justify-start">
-                                <span className="text-xl font-semibold">Brand Name</span>
-
-                            </label>
                             <label>
-                                <select className="input rounded-sm w-full" name="brand_name" id="">
-
+                                <select {...register("brand_Name", { required: true })}
+                                    className="input w-full">
                                     <option value="BMW">BMW</option>
                                     <option value="Mercedes-Benz">Mercedes-Benz</option>
                                     <option value="AUDI">AUDI</option>
                                     <option value="FORD">FORD</option>
                                     <option value="TESLA">TESLA</option>
-                                    <option value="Toyota">TOYOTA</option>
+                                    <option value="TOYOTA">TOYOTA</option>
                                 </select>
                             </label>
                         </div>
-
                     </div>
 
-
-                    {/* form row  */}
-
-                    {/* Supplier */}
-
-                    <div className="md:flex gap-6">
-                        <div className=" pb-3 md:w-1/2">
-                            <label>
-                                <span className="text-xl font-semibold">Type</span>
-                            </label>
-                            <label>
-                                <input type="text" required name="type" placeholder="Enter product type" className="input rounded-sm w-full" />
-                            </label>
+                    {/* 2ND ROW  */}
+                    <div className="md:flex gap-10 mt-5">
+                        <div className="flex-1">
+                            <label className="flex">Product Type</label>
+                            <input {...register("type", { required: true })}
+                                required
+                                type="text" placeholder="Product Type" className="input input-bordered input-info w-full " />
                         </div>
-
-                        {/* Taste */}
-
-                        <div className=" pb-3 md:w-1/2">
-                            <label>
-                                <span className="text-xl font-semibold">Price</span>
-                            </label>
-                            <label>
-                                <input type="number" required name="price" placeholder="Enter product price" className="input rounded-sm w-full" />
-                            </label>
+                        <div className="flex-1">
+                            <label className="flex">Price</label>
+                            <input {...register("price", { required: true })}
+                                required
+                                type="number" placeholder="Product Price" className="input input-bordered input-info w-full " />
                         </div>
                     </div>
 
+                    {/* 3rd ROW  */}
 
-                    {/* form row  */}
-                    <div className="md:flex gap-6">
-
-
-                        {/* Category */}
-
-                        <div className="space-y-4 md:w-1/2">
-                            <label className="flex justify-start">
-                                <span className="text-xl font-semibold">Rating</span>
-
-                            </label>
+                    <div className="md:flex gap-10 mt-5">
+                        <div className="flex-1 flex-col ">
+                            <label className="mb-3">Chose Your Image</label>
+                            <div className="w-full flex justify-center bg-white py-2 rounded-lg border border-blue-300">
+                                <input {...register("image", { required: true })}
+                                    required
+                                    type="file" className="" />
+                            </div>
+                        </div>
+                        <div className="flex-1">
+                            <label className="flex">Rating</label>
                             <label>
-                                <select className="input w-full" name="rating" id="">
+                                <select {...register("rating", { required: true })}
+                                    className="input w-full">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                     <option value="5">5</option>
+
                                 </select>
                             </label>
                         </div>
-
-                        {/* Details  */}
-
-                        <div className=" pb-3 md:w-1/2">
-                            <label>
-                                <span className="text-xl font-semibold">Description</span>
-                            </label>
-                            <label>
-                                <input type="text" required name="description" placeholder="Enter product description" className="input rounded-sm w-full" />
-                            </label>
-                        </div>
                     </div>
 
-                    {/* form Photo url  */}
-
-                    <div className=" pb-3 md:w-full">
-                        <label>
-                            <span className="text-xl font-semibold">Photo</span>
+                    {/* last row  */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Recipe Details</span>
                         </label>
-                        <label>
-                            <input type="text" required name="photo" placeholder="Enter photo URL" className="input rounded-sm w-full" />
-                        </label>
+                        <textarea {...register("description")}
+                            className="textarea textarea-bordered h-24" placeholder="Product Details ..."></textarea>
                     </div>
 
-                    <input type="submit" value="Add Product" className="btn btn-block bg-black text-white hover:bg-black hover:text-red-500 hover:border-red-500" />
 
+
+                    <input className="w-full btn mt-10 border" type="submit" />
                 </form>
-            </div>
-
-        </div>
+            </div >
+        </div >
     );
 };
 
-export default AddProduct;
+export default AddItems;

@@ -125,11 +125,13 @@ const Register = () => {
                                     </div>
 
                                     {/* image field  */}
-                                    <div className="flex flex-col">
+                                    <div className="flex flex-col ">
                                         <label className="mb-3">Chose Your Image</label>
-                                        <input {...register("image", { required: true })}
-                                            required
-                                            type="file" className="w-full" />
+                                        <div className="w-full flex justify-center bg-white py-2 rounded-lg border border-blue-300">
+                                            <input {...register("image", { required: true })}
+                                                required
+                                                type="file" className="" />
+                                        </div>
                                     </div>
 
 
