@@ -78,7 +78,7 @@ const Navbar = () => {
 
                     <div
                         style={{ color: `${textColor}` }}
-                        className={`absolute lg:flex mt-44 w-full bg-black md:m-0  md:p-0 duration-2000
+                        className={`absolute lg:flex mt-44 w-full lg:w-fit bg-black md:m-0  md:p-0 duration-2000
                 ${open ? ' ' : 'hidden'} md:static 
                 md:bg-transparent text-center space-y-2`}
                     >
