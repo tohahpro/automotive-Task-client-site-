@@ -11,20 +11,20 @@ const OurAchivement = () => {
                 <div className="px-16 py-2 shadow-2xl shadow-red-200 grid grid-cols-1 md:grid-cols-3 rounded-2xl">
                     <div className="flex justify-center">
                         <div className="p-5">
-                            <p className="text-2xl font-extrabold">4000+</p>
-                            <p className="">Active Member</p>
+                            <p className="text-5xl font-sans font-extrabold">4000+</p>
+                            <p className="pt-2">Active Member</p>
                         </div>
                     </div>
                     <div className="flex justify-center">
                         <div className="p-5">
-                            <p className="text-2xl font-extrabold">3000+</p>
-                            <p className="">Car Model</p>
+                            <p className="text-5xl font-sans font-extrabold">3000+</p>
+                            <p className="pt-2">Car Model</p>
                         </div>
                     </div>
                     <div className="flex justify-center">
                         <div className="p-5">
-                            <p className="text-2xl font-extrabold">6k</p>
-                            <p className="">Positive Review</p>
+                            <p className="text-5xl font-sans font-extrabold">6k</p>
+                            <p className="pt-2">Positive Review</p>
                         </div>
                     </div>
 

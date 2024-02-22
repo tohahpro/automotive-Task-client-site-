@@ -13,6 +13,7 @@ import image3 from '../../../assets/image/image-1/telephone.png';
 import image4 from '../../../assets/image/image-1/verify.png';
 import OurAchivement from "../OurAchivement";
 import ReviewSlider from "./ReviewSlider";
+import Features from "./Features";
 
 
 
@@ -59,6 +60,12 @@ const Home = () => {
                         </p>
                     </div>
                 </div>
+            </div>
+
+            {/* Core Features  */}
+
+            <div>
+                <Features />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-20 lg:px-56">
@@ -148,6 +155,7 @@ const Home = () => {
             {/* client Review  */}
 
             <ReviewSlider />
+
 
 
 

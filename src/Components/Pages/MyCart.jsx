@@ -59,7 +59,9 @@ const MyCart = () => {
 
             <div className="container pt-40">
                 {
-                    products.length === 0 ? <p>You can not</p>
+                    products.length === 0 ? <div className="flex justify-center items-center">
+                        <p className="pt-20 text-xl font-bold">You Haven't Ordered Anything Yet</p>
+                    </div>
                         :
                         <table className="lg:w-full flex flex-row flex-no-wrap sm:bg-white overflow-hidden sm:shadow-lg my-5">
                             <thead className="text-white ">
