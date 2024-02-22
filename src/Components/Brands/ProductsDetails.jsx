@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Rating from "./Rating";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 const ProductsDetails = () => {
@@ -9,6 +10,10 @@ const ProductsDetails = () => {
     const dataLoad = useLoaderData()
     const { id } = useParams()
     // console.log(id);
+
+    const { user } = useContext(AuthContext)
+    const email = user.email;
+    console.log(email);
 
     const [details, setDetails] = useState('')
 
@@ -27,6 +32,7 @@ const ProductsDetails = () => {
     const handleOrder = (e) => {
         e.preventDefault()
         const orderItem = {
+            userEmail: email,
             photo: photo,
             product_name: product_name,
             type: type,

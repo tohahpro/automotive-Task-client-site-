@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import Rating from "../Brands/Rating";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const MyCart = () => {
 
     const dataLoaded = useLoaderData([])
-    const [products, setProducts] = useState(dataLoaded)
+    const { user } = useContext(AuthContext)
+    const email = user.email;
+    // console.log(email);
 
+    const match = dataLoaded?.filter(item => item.userEmail === email);
+    const [products, setProducts] = useState(match)
 
 
     const handleDelete = _id => {
