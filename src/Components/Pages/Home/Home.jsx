@@ -12,6 +12,7 @@ import image2 from '../../../assets/image/image-1/free.png';
 import image3 from '../../../assets/image/image-1/telephone.png';
 import image4 from '../../../assets/image/image-1/verify.png';
 import OurAchivement from "../OurAchivement";
+import ReviewSlider from "./ReviewSlider";
 
 
 
@@ -142,6 +143,12 @@ const Home = () => {
             {/* our OurAchivement  */}
 
             <OurAchivement />
+
+
+            {/* client Review  */}
+
+            <ReviewSlider />
+
 
 
             <div className="h-[30vh] lg:h-[50vh] w-full bg-center bg-cover header-img1">
