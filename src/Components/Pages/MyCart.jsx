@@ -4,12 +4,15 @@ import Swal from "sweetalert2";
 import Rating from "../Brands/Rating";
 import { AuthContext } from "../Provider/AuthProvider";
 
+
+
 const MyCart = () => {
 
     const dataLoaded = useLoaderData([])
     const { user } = useContext(AuthContext)
     const email = user.email;
     // console.log(email);
+
 
     const match = dataLoaded?.filter(item => item.userEmail === email);
     const [products, setProducts] = useState(match)
@@ -52,6 +55,8 @@ const MyCart = () => {
 
     return (
         <div className="px-20 lg:px-56 min-h-screen">
+
+
             <div className="container pt-40">
                 {
                     products.length === 0 ? <p>You can not</p>
@@ -101,9 +106,11 @@ const MyCart = () => {
                                         </td>
                                         <td className="border-grey-light border hover:bg-gray-100 p-3 truncate font-sans">
                                             {product.price} $
+
                                         </td>
                                         <td onClick={() => handleDelete(product._id)} className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-semibold cursor-pointer">
                                             Delete
+
                                         </td>
                                     </tr>)
                                 }

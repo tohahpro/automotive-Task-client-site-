@@ -7,6 +7,13 @@ import BrandMarquee from "./BrandMarquee";
 import clientRating from '../../../assets/image/logo-icons/3-layers-1.png'
 import Service from "./Service";
 
+import image1 from '../../../assets/image/image-1/best.png';
+import image2 from '../../../assets/image/image-1/free.png';
+import image3 from '../../../assets/image/image-1/telephone.png';
+import image4 from '../../../assets/image/image-1/verify.png';
+import OurAchivement from "../OurAchivement";
+
+
 
 
 
@@ -77,6 +84,64 @@ const Home = () => {
             <div className="flex justify-center py-16">
                 <Service></Service>
             </div>
+
+
+            {/* why choose us section  */}
+
+            <div className="py-16">
+
+                <div>
+                    <h1 className="text-center md:text-4xl font-extrabold">Why Choose Us</h1>
+                    <p className="text-center w-1/2 mx-auto pt-8 pb-20">
+                        aven Flexibility, Customizability, Design Quality, Features - this theme ticks every single box. In 10 years of using ThemeForest i've never felt compelled to leave a review until now. TangibleDesign have made this so easy, and stress free, and just when I think they have not thought</p>
+                </div>
+
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12  md:mx-10 lg:mx-56">
+                    <div className="flex">
+                        <div className="w-20 md:w-32 md:h-12  justify-center rounded-2xl bg-red-400  hidden md:flex">
+                            <img className="w-4 md:w-12" src={image1} alt="" />
+                        </div>
+                        <div className="pl-5">
+                            <h1 className="text-base font-bold font-sans">Best Price</h1>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut illum rem id eveniet numquam officia. Porro quo quidem repellendus unde corporis maxime dolor a nostrum laudantium, perspiciatis error velit eveniet?</p>
+                        </div>
+                    </div>
+                    <div className="flex">
+                        <div className="w-20 md:w-32 md:h-12  hidden md:flex justify-center rounded-2xl bg-red-400 ">
+                            <img className="w-4 md:w-12" src={image2} alt="" />
+                        </div>
+                        <div className="pl-5">
+                            <h1 className="text-base font-bold font-sans">Free Condition</h1>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut illum rem id eveniet numquam officia. Porro quo quidem repellendus unde corporis maxime dolor a nostrum laudantium, perspiciatis error velit eveniet?</p>
+                        </div>
+                    </div>
+                    <div className="flex">
+                        <div className="w-20 md:w-32 md:h-12  hidden md:flex justify-center rounded-2xl bg-red-400 ">
+                            <img className="w-4 md:w-12" src={image3} alt="" />
+                        </div>
+                        <div className="pl-5">
+                            <h1 className="text-base font-bold font-sans">24 Hours Support</h1>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut illum rem id eveniet numquam officia. Porro quo quidem repellendus unde corporis maxime dolor a nostrum laudantium, perspiciatis error velit eveniet?</p>
+                        </div>
+                    </div>
+                    <div className="flex">
+                        <div className="w-20 md:w-32 md:h-12  hidden md:flex justify-center items-center rounded-2xl bg-red-400 ">
+                            <img className="w-10 h-10" src={image4} alt="" />
+                        </div>
+                        <div className="pl-5">
+                            <h1 className="text-base font-bold font-sans">Verified Product</h1>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut illum rem id eveniet numquam officia. Porro quo quidem repellendus unde corporis maxime dolor a nostrum laudantium, perspiciatis error velit eveniet?</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            {/* our OurAchivement  */}
+
+            <OurAchivement />
 
 
             <div className="h-[30vh] lg:h-[50vh] w-full bg-center bg-cover header-img1">

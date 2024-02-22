@@ -2,9 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import { BiMenu, BiMenuAltRight } from 'react-icons/bi';
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+
 
 import Logo from "../../assets/image/logo-icons/logo.png";
+
+
 
 
 const Navbar = () => {
@@ -14,8 +16,6 @@ const Navbar = () => {
 
     const [color, setColor] = useState('transparent')
     const [textColor, setTextColor] = useState('white')
-
-
     const [theme, setTheme] = useState('light-theme')
 
 
@@ -37,8 +37,6 @@ const Navbar = () => {
 
 
 
-
-
     useEffect(() => {
         const changeColor = () => {
             if (window.scrollY >= 30) {
@@ -52,6 +50,10 @@ const Navbar = () => {
         }
         window.addEventListener('scroll', changeColor);
     }, [])
+
+
+
+
 
     return (
         <div>
@@ -110,8 +112,7 @@ const Navbar = () => {
                                         isPending ? "pending" : isActive ? "text-[#67B6F4] underline" : ""
                                     }
                                 >
-                                    <span className="absolute top-8 ml-1 bg-green-400 px-1 text-sm rounded-full text-center font-semibold">10</span>
-                                    <AiOutlineShoppingCart className="text-2xl font-medium flex justify-center items-center"></AiOutlineShoppingCart>
+                                    My Cart
                                 </NavLink>
                             </li>
                         </ul>
